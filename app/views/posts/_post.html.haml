@@ -1,0 +1,9 @@
+%tr
+  %td= link_to post.title, user_post_path(@user, post)
+  %td= link_to post.body, user_post_path(@user, post)
+  // %td= link_to post.title, post_url(post)
+  // %td= link_to post.body, post_url(post)
+  %td
+    -if post.owner? current_user
+      // = link_to 'Edit', edit_post_path(post)
+      = link_to 'Edit', edit_user_post_path(@user, post)    

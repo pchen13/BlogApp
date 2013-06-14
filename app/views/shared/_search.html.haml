@@ -1,0 +1,4 @@
+.search
+  = form_tag("/posts/search", :method => "get", :remote => true, 'search-result-target' => 'list') do
+    = text_field_tag(:q, nil, :placeholder => 'Search for posts:')
+    = submit_tag("Search")

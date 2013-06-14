@@ -1,0 +1,10 @@
+= render :partial => 'shared/search'
+// = link_to 'New Post', new_user_post_path(@user)
+// = link_to 'Rate', rate_user_url
+// , :class =>'new'
+#list
+    - if @user.posts.size > 0
+        = render 'posts/list'
+    - else
+        %div
+            no posts yet!!!

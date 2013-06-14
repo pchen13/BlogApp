@@ -1,0 +1,6 @@
+%tr
+  %td= link_to post.user.email, user_url(post.user)
+  // %td= link_to post.title, post_url(post)
+  // %td= link_to post.body, post_url(post)
+  %td= link_to post.title, user_post_url(post.user, post)
+  %td= link_to post.body, user_post_url(post.user, post)

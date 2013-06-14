@@ -1,0 +1,31 @@
+.wrapper
+    - if @post.owner? current_user
+        .post-delete
+            = link_to 'Delete', user_post_path(@user, @post), :method => 'delete', :confirm => 'Are you sure?'
+            // = link_to 'Delete', post_url(@post), :method => 'delete', :confirm => 'Are you sure?'
+    .post-title
+        = @post.title
+    .post-body
+        = @post.body
+    - if @post.images.size > 0
+        .post-image
+            - @post.images.each do |img|
+                = image_tag("/assets/"+img)
+            
+.wrapper.comments
+    - if @post.comments.size > 0
+        Comments:
+        - @post.comments.each_with_index do |comment, index|
+            .wrapper
+                #{index+1}. #{comment.user.email} replied:
+                .post-body
+                    #{comment.body}
+    - else
+        No comments
+        
+#reply
+    = form_for [@comment], :url => reply_post_url(@post) do |f|
+        .form-row
+            = f.text_area :body, :rows => 3
+        .form-row 
+            = f.submit 'Reply'

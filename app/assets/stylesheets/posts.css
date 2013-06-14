@@ -1,0 +1,37 @@
+.post-title{
+    font-weight: bold;
+    font-size: 1.5em;
+    text-transform: capitalize;
+}
+#post_title{
+    width: 80%;
+}
+.post-body{
+    text-indent: 1.5em;
+    width: 80%;
+}
+.post-body:first-letter{
+    text-transform: uppercase;
+}
+.post-body, .post-image{
+    display: inline-block;
+    vertical-align: top;
+}
+textarea{
+    vertical-align: top;
+    width: 98%;
+    min-height: 50px;
+    resize: none;
+}
+.post-delete{
+    float: right;
+}
+table tr:not(:first-child):hover{
+    background-color: lightblue;
+}
+.search{
+    float: right;
+}
+table tr:nth-child(odd){
+    background-color: silver;
+}

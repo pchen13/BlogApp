@@ -1,0 +1,6 @@
+%table
+  %tr
+    %td User
+    %td Title
+    %td Body
+  = render :partial => "post", :collection => @posts || @user.posts

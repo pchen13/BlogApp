@@ -1,0 +1,18 @@
+// = form_for [@user, @post] do |f|
+= form_for [@post], :html => {:multipart => true} do |f|
+    .form-row
+        = f.label :title
+        = f.text_field :title
+    .form-row    
+        = f.label :body
+        = f.text_area :body, :rows => '5'
+    - if @post.images.size > 0
+        - @post.images.each do |img|
+            %img.post-image{:src => '/assets'+img}
+    .form-row
+        = label_tag 'image'
+        = file_field_tag 'image'
+        #upload-preview
+    .btn.form-btn
+        = f.submit 'Save'
+    
