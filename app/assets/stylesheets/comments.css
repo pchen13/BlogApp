@@ -1,0 +1,12 @@
+.comment .reply-body{
+  border-top: 1px dashed lightblue;
+  border-bottom: 1px dashed lightblue;
+  padding: 10px;
+}
+.comment .voting > div{
+  display: inline-block;
+}
+.comment .voting{
+  text-align: right;
+}
+  

@@ -12,26 +12,25 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+// require_tree .
 $(document).ready(function(){
-    setInterval(refreshVisits, 5000);
-    $('#image').change(function(){
-        readURL(this, '#upload-preview'); 
+  $('form[search-result-target]').bind('ajax:success', function(evt, data) {
+        $('#list').html(data);
     });
 });
-function refreshVisits(){
-    $.get('/get_counter', function(data){
-        $('.visits span').text(data);
-    });
-}
-function readURL(input, holder) {
 
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            $(holder).html('<img src="'+e.target.result+'"/>');
-        }
-
-        reader.readAsDataURL(input.files[0]);
+function refresh(selector){
+  $(selector).each(function(key, element){
+    var url = $(element).attr("data-url");
+    console.log(url);
+    if(url){
+      $.get(url, function(data){
+        $(element).text(data);
+      })
     }
+  })
+  
+}
+function permissionDenied(){
+  alert("Please login before perform this action");
 }

@@ -1,0 +1,21 @@
+/*
+*= require posts
+*= require_self
+*/
+.highlight{
+  background-color: #ccffff;
+  clear: both;
+}
+#blog-stats > div, #blog-actions > div{
+  width: 200px;
+}
+#blog-stats > div, #voting-status .vote-up, #voting-status .vote-down, #blog-actions > div{
+  display: inline-block;
+  vertical-align: top;
+}
+#voting-status .vote-up, #voting-status .vote-down, .voting > button{
+  width: 70px;
+}
+#blog-actions{
+  margin-left: 205px;
+}

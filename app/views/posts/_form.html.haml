@@ -1,11 +1,11 @@
 // = form_for [@user, @post] do |f|
-= form_for [@post], :html => {:multipart => true} do |f|
+= form_for [@user, @post], :html => {:multipart => true} do |f|
     .form-row
         = f.label :title
         = f.text_field :title
     .form-row    
         = f.label :body
-        = f.text_area :body, :rows => '5'
+        = f.text_area :body, :class => 'tinymce', :rows => '20'
     - if @post.images.size > 0
         - @post.images.each do |img|
             %img.post-image{:src => '/assets'+img}
@@ -15,4 +15,4 @@
         #upload-preview
     .btn.form-btn
         = f.submit 'Save'
-    
+// = tinymce

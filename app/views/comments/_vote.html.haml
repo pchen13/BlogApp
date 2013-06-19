@@ -1,0 +1,11 @@
+.voting
+  .vote-up
+    %button{:data => {:url => "/comments/"+comment.id.to_s+"/vote/1"}}
+      Up Vote
+    %span{:data => {:url => "/comments/"+comment.id.to_s+"/get_vote_up"}}
+      = comment.votings.up.count
+  .vote-down
+    %button{:data => {:url => "/comments/"+comment.id.to_s+"/vote/0"}}
+      Down Vote
+    %span{:data => {:url => "/comments/"+comment.id.to_s+"/get_vote_down"}}
+      = comment.votings.down.count

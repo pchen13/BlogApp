@@ -1,0 +1,19 @@
+#blog-stats
+  .visits
+    Viewers:
+    %span{:data => {:url => "/blog/"+@user.id.to_s+"/visits"}}
+      = @user.visits.count
+  #rating-status
+    Rating:
+    %span{:data => {:url => "/blog/"+@user.id.to_s+"/get_rating"}}
+      = @user.rate
+  #voting-status
+    Votes:
+    .vote-up
+      &uarr;
+      %span{:data => {:url => "/blog/"+@user.id.to_s+"/get_vote_up"}}
+        = @user.votings.up.count
+    .vote-down
+      &darr;
+      %span{:data => {:url => "/blog/"+@user.id.to_s+"/get_vote_down"}}
+        = @user.votings.down.count

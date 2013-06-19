@@ -2,41 +2,45 @@
 %html
   %head
     %title Blog
-    = stylesheet_link_tag    "application", :media => "all"
-    = javascript_include_tag "application"
+    - if controller_name != 'sessions' && controller_name != 'registrations'
+      = stylesheet_link_tag    controller_name, :media => "all"
+    = stylesheet_link_tag    'application', :media => "all"
+    // <script src="/tinymce/tinymce.min.js"></script>
     = csrf_meta_tags
   %body
     #content
       #header
-        %h2 Welcome to my blog!!!
-        #login-status 
-          - if user_signed_in?
-            = current_user.email
-            = link_to 'sign_out', destroy_user_session_path, :method => :delete
-          - else 
-            - if controller_name != 'sessions' && controller_name != 'registrations'
-              = link_to "Login", new_session_path(:user)
-              = link_to "Sign up", new_registration_path(:user)
-        .visits 
-          Viewers:
-          %span
-            // = $visits
-            = site_counter
+        %h2 
+          - if @user && !@user.id.nil?
+            = link_to "Welcome to #{@user.email} blog!!!", user_path(@user), :id => 'blog-name'
+          - else
+            Welcome
+        .status
+          #login-status 
+            - if user_signed_in?
+              = current_user.email
+              = link_to 'sign_out', destroy_user_session_path, :method => :delete
+            - else 
+              - if controller_name != 'sessions' && controller_name != 'registrations'
+                = link_to "Login", new_session_path(:user)
+                = link_to "Sign up", new_registration_path(:user)
+          
       #page-content
-        // = render :partial => 'shared/search'
+        - if controller_name == 'home' || controller_name == 'users'
+          = render :partial => 'shared/search'
         .menu
-          = link_to 'Home', root_url
-          - if user_signed_in?
-            = link_to 'My Blog', user_path(current_user)
-            = link_to 'New Post', new_user_post_path(current_user)
-            - if @user && !current_user.rated?(@user)
-              = link_to 'Rate', rate_user_path(@user)
-            
+          = render 'shared/menu'
         // .notice
         //   = notice
         // .alert
         //   = alert
-        = yield
+        .main
+          = yield
+        
       #footer
         %p
           All rights reserved
+    = javascript_include_tag "application"
+    - if controller_name != 'sessions' && controller_name != 'registrations'
+      = javascript_include_tag controller_name
+      

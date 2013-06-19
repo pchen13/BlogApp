@@ -1,3 +1,9 @@
+/*
+*= require comments
+*/
+.post{
+    min-height: 200px;
+}
 .post-title{
     font-weight: bold;
     font-size: 1.5em;
@@ -10,13 +16,17 @@
     text-indent: 1.5em;
     width: 80%;
 }
+.post-author{
+    font-size: small;
+    text-align: right;
+}
 .post-body:first-letter{
     text-transform: uppercase;
 }
-.post-body, .post-image{
-    display: inline-block;
-    vertical-align: top;
-}
+/*.post-body, .post-image{*/
+/*    display: inline-block;*/
+/*    vertical-align: top;*/
+/*}*/
 textarea{
     vertical-align: top;
     width: 98%;
@@ -24,14 +34,25 @@ textarea{
     resize: none;
 }
 .post-delete{
-    float: right;
+    /*float: right;*/
+    text-align: right;
 }
 table tr:not(:first-child):hover{
     background-color: lightblue;
 }
-.search{
-    float: right;
-}
 table tr:nth-child(odd){
     background-color: silver;
+}
+.comments{
+    margin: 20px 0;
+}
+.comment, .post{
+    padding: 8px;
+    border: 1px solid lightblue;
+    border-radius: 8px;
+    -moz-border-radius: 15px;
+    margin: 5px 0;
+}
+.time-status{
+    float: right;
 }

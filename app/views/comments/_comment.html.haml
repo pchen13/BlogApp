@@ -1,0 +1,7 @@
+.comment
+  .time-status
+    = distance_of_time_in_words_to_now(comment.created_at) + " ago"
+  #{comment_counter + 1}. #{comment.user.email} replied:
+  .reply-body
+    #{comment.body.html_safe}
+  = render :partial => 'comments/vote', :locals => {:comment => comment}

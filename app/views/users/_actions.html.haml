@@ -1,0 +1,14 @@
+#blog-actions
+  .rating
+    %span.wrapper
+      Rate this blog: 
+    = select(:rating, :score, options_for_select((1..10).map {|n| [n, n]}, 10))
+    %button#rate_blog{:data => {:url => "/blog/"+@user.id.to_s+"/rate/"}}
+      rate
+  .voting
+    %span
+      Vote:
+    %button.vote-up{:data => {:url => "/blog/"+@user.id.to_s+"/vote/1"}}
+      Up
+    %button.vote-down{:data => {:url => "/blog/"+@user.id.to_s+"/vote/0"}}
+      Down

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  direction: 1
+  user: 
+  comment: 
+
+two:
+  direction: 1
+  user: 
+  comment: 

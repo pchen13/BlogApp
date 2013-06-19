@@ -1,31 +1,37 @@
-.wrapper
-    - if @post.owner? current_user
-        .post-delete
-            = link_to 'Delete', user_post_path(@user, @post), :method => 'delete', :confirm => 'Are you sure?'
-            // = link_to 'Delete', post_url(@post), :method => 'delete', :confirm => 'Are you sure?'
-    .post-title
-        = @post.title
-    .post-body
-        = @post.body
-    - if @post.images.size > 0
-        .post-image
-            - @post.images.each do |img|
-                = image_tag("/assets/"+img)
-            
+.wrapper.post
+  .time-status
+    = "created: " + distance_of_time_in_words_to_now(@post.created_at) + " ago"
+  .post-title
+    = @post.title
+  .post-body
+    = @post.body.html_safe
+  - if @post.images.size > 0
+    .post-image
+      - @post.images.each do |img|
+        = image_tag("/assets/"+img)
+  - if @post.owner? current_user
+    .post-delete
+      = link_to 'Delete', user_post_path(@user, @post), :method => 'delete', :confirm => 'Are you sure?'
+      // = link_to 'Delete', post_url(@post), :method => 'delete', :confirm => 'Are you sure?'
+          
 .wrapper.comments
-    - if @post.comments.size > 0
-        Comments:
-        - @post.comments.each_with_index do |comment, index|
-            .wrapper
-                #{index+1}. #{comment.user.email} replied:
-                .post-body
-                    #{comment.body}
-    - else
-        No comments
+  - if @post.comments.size > 0
+    Comments:
+    // - @post.comments.each_with_index do |comment, index|
+    //   .wrapper
+    //     .time-status
+    //       = distance_of_time_in_words_to_now(comment.created_at) + " ago"
+    //     #{index+1}. #{comment.user.email} replied:
+    //     .reply-body
+    //       #{comment.body.html_safe}
+    //     //= render 'comments/vote'
+    = render 'comments/list'
+  - else
+    No comments
         
 #reply
-    = form_for [@comment], :url => reply_post_url(@post) do |f|
-        .form-row
-            = f.text_area :body, :rows => 3
-        .form-row 
-            = f.submit 'Reply'
+  = form_for [@comment], :url => reply_post_path(@post) do |f|
+    .form-row
+      = f.text_area :body, :rows => 3, :class => 'tinymce'
+    .form-row 
+      = f.submit 'Reply'

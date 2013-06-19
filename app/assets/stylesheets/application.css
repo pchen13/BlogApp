@@ -9,7 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
+ *
  */
 html{
     height: 100%;
@@ -64,8 +64,11 @@ table{
 .wrapper{
     position: relative;
 }
-.visits{
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
+.search{
+    clear: both;
+    float: right;
+}
+#blog-name{
+  text-decoration: none;
+  color: black;
 }

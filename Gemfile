@@ -7,6 +7,8 @@ gem 'rails', '3.2.13'
 gem 'haml'
 gem 'sqlite3'
 gem 'devise'
+gem 'mercury-rails'
+# gem 'tinymce-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -36,3 +38,4 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+gem 'paperclip'
