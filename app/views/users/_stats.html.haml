@@ -7,13 +7,18 @@
     Rating:
     %span{:data => {:url => "/blog/"+@user.id.to_s+"/get_rating"}}
       = @user.rate
+    .rate-action{:data => {:url => "/blog/"+@user.id.to_s+"/rate/"}}
+      - (1..10).each do |value|
+        <input id="rating_score" name="rating[score]" type="radio" class='star' value='#{value}'>
+      %button#rate_blog{:data => {:url => "/blog/"+@user.id.to_s+"/rate/"}}
+        Rate
   #voting-status
     Votes:
     .vote-up
-      &uarr;
+      = image_tag('thumbs_up.png', :size => '16x16', :data => {:url => "/blog/"+@user.id.to_s+"/vote/1"})
       %span{:data => {:url => "/blog/"+@user.id.to_s+"/get_vote_up"}}
         = @user.votings.up.count
     .vote-down
-      &darr;
+      = image_tag('thumbs_down.png', :size => '16x16', :data => {:url => "/blog/"+@user.id.to_s+"/vote/0"})
       %span{:data => {:url => "/blog/"+@user.id.to_s+"/get_vote_down"}}
         = @user.votings.down.count

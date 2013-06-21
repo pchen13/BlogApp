@@ -1,15 +1,17 @@
 /*
 *= require posts
+*= require jquery-star-rating
 *= require_self
 */
 .highlight{
   background-color: #ccffff;
   clear: both;
+  padding: 8px;
 }
 #blog-stats > div, #blog-actions > div{
-  width: 200px;
+  min-width: 150px;
 }
-#blog-stats > div, #voting-status .vote-up, #voting-status .vote-down, #blog-actions > div{
+#blog-stats > div, #voting-status > *, #blog-actions > div, .rate-action{
   display: inline-block;
   vertical-align: top;
 }
@@ -18,4 +20,7 @@
 }
 #blog-actions{
   margin-left: 205px;
+}
+#voting-status img:hover{
+  background-color: white;
 }

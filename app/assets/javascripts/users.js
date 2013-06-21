@@ -1,4 +1,4 @@
-//= require 'sidebar'
+//= require jquery-star-rating
 var id = getBlogId();
 $(document).ready(function(){
     setInterval(refreshStats, 5000);
@@ -7,6 +7,43 @@ $(document).ready(function(){
     });
     $('form[search-result-target]').bind('ajax:success', function(evt, data) {
         $('#list').html(data);
+    });
+    //$("#blog-actions .rating button").click(function(){
+    $("#rating-status .rate-action button").click(function(e){
+        e.preventDefault();
+        var url = $(this).attr("data-url")+ $(":input[name='rating[score]']:checked").val();
+        // console.log(url);
+        $.get(url).fail(function(xhr){ 
+          if(xhr.status == 401){
+            permissionDenied();
+          }
+        });
+    });
+    //$("#blog-actions .voting .vote-up").click(function(){
+    $("#voting-status .vote-up img").click(function(){
+        var url = $(this).attr("data-url");
+        // console.log(url);
+        $.get(url).fail(function(xhr){ 
+          if(xhr.status == 401){
+            permissionDenied();
+          }
+        });
+    });
+    // $("#blog-actions .voting .vote-down").click(function(){
+    $("#voting-status .vote-down img").click(function(){
+        var url = $(this).attr("data-url");
+        // console.log(url);
+        $.get(url).fail(function(xhr){ 
+          if(xhr.status == 401){
+            permissionDenied();
+          }
+        });
+    });
+    $("input.star").rating(
+      {callback: function(ui, value, link){
+        console.log(value+' - '+link);
+      }
+      
     });
 });
 function readURL(input, holder) {
@@ -57,7 +94,7 @@ function refreshStats(){
   // refreshVisits();
   // refreshRating();
   // refreshVote();
-  console.log("refreshing...");
+  // console.log("refreshing...");
   refresh('.visits span');
   refresh("#voting-status .vote-up span");
   refresh("#voting-status .vote-down span");

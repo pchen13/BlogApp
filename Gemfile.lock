@@ -31,6 +31,9 @@ GEM
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
     builder (3.0.4)
+    ckeditor (4.0.4)
+      mime-types
+      orm_adapter
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.1)
@@ -58,6 +61,8 @@ GEM
     jquery-rails (2.2.1)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
+    jquery-star-rating-rails (4.0.4)
+      rails (>= 3.1.0)
     json (1.8.0)
     mail (2.5.4)
       mime-types (~> 1.16)
@@ -127,10 +132,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  ckeditor
   coffee-rails (~> 3.2.1)
   devise
   haml
   jquery-rails
+  jquery-star-rating-rails
   mercury-rails
   paperclip
   rails (= 3.2.13)

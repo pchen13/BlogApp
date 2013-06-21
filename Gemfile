@@ -9,6 +9,8 @@ gem 'sqlite3'
 gem 'devise'
 gem 'mercury-rails'
 # gem 'tinymce-rails'
+gem 'jquery-star-rating-rails'
+gem 'ckeditor'
 
 # Gems used only for assets and not required
 # in production environments by default.

@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+
 // require_tree .
 $(document).ready(function(){
   $('form[search-result-target]').bind('ajax:success', function(evt, data) {
@@ -22,7 +23,7 @@ $(document).ready(function(){
 function refresh(selector){
   $(selector).each(function(key, element){
     var url = $(element).attr("data-url");
-    console.log(url);
+    // console.log(url);
     if(url){
       $.get(url, function(data){
         $(element).text(data);

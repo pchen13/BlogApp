@@ -3,9 +3,9 @@
     = "created: " + distance_of_time_in_words_to_now(post.created_at) + " ago"
   .post-title
     = link_to post.title, user_post_path(post.user, post)
-    - if !@user
-      .post-author
-        = link_to post.user.email, user_path(post.user)
+  - if !@user
+    .post-author
+      = link_to post.user.email, user_path(post.user)
   .post-body
     = post.body.html_safe
   - if post.owner?(current_user) && action_name != 'edit'

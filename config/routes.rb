@@ -1,9 +1,11 @@
 Blog::Application.routes.draw do
-  namespace :mercury do
-    resources :images
-  end
+  mount Ckeditor::Engine => '/ckeditor'
 
-  mount Mercury::Engine => '/'
+  # namespace :mercury do
+  #   resources :images
+  # end
+
+  # mount Mercury::Engine => '/'
 
   devise_for :users
   
